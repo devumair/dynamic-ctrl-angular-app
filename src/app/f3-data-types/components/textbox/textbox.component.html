@@ -1,0 +1,17 @@
+<div class="form-group" id="{{additionalField.FieldKey}}" *ngIf="additionalField.IsVisible">
+  <label *ngIf="!isForGrid" class="form-label">{{additionalField.FieldName}} <i *ngIf="additionalField.IsMandatory" class="txt-red">*</i></label>
+
+  <ng-container *ngIf="isViewOnly; then ViewOnly; else Default"></ng-container>
+
+  <ng-template #Default>
+    <input type="text" class="form-control" name="{{additionalField.FieldKey}}" #textbox
+      placeholder="{{additionalField.PlaceHolder}}" [ngModel]="textValue" (ngModelChange)="onTextChange($event)"
+      [disabled]="additionalField.IsReadOnly || workflowState" />
+  </ng-template>
+
+  <ng-template #ViewOnly>
+    <app-label [textValue]="textValue"></app-label>
+  </ng-template>
+
+
+</div>

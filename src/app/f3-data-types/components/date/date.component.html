@@ -1,0 +1,16 @@
+<div class="form-group" id="{{additionalField.FieldKey}}" *ngIf="additionalField.IsVisible">
+  <label class="form-label">{{additionalField.FieldName}} <i *ngIf="additionalField.IsMandatory" class="txt-red">*</i></label>
+  <ng-container *ngIf="isViewOnly; then ViewOnly; else Default"></ng-container>
+
+  <!-- [ngModel]="selectedDate"  (ngModelChange)="onDateChange($event)" -->
+  <ng-template #Default>
+    <input type="date" placeholder="{{additionalField.PlaceHolder}}" class="form-control"
+
+      [disabled]="additionalField.IsReadOnly || workflowState" />
+  </ng-template>
+
+  <ng-template #ViewOnly>
+    <app-label [textValue]="getFormattedDate()"></app-label>
+  </ng-template>
+
+</div>

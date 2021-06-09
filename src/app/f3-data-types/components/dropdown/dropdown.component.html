@@ -1,0 +1,21 @@
+<div class="form-group" id="{{additionalField.FieldKey}}" *ngIf="additionalField.IsVisible">
+  <label *ngIf="!isForGrid" class="form-label">{{additionalField.FieldName}} <i
+      *ngIf="additionalField.IsMandatory" class="txt-red">*</i></label>
+
+  <ng-container *ngIf="isViewOnly; then ViewOnly; else Default"></ng-container>
+
+  <ng-template #Default>
+    <select>
+      <option value="0">Select</option>
+    </select>
+  </ng-template>
+
+  <ng-template #ViewOnly>
+    <app-label [textValue]="additionalField.FieldValue"></app-label>
+  </ng-template>
+
+
+  <!-- <div *ngIf="requiredCurrency" class="color-red">
+          Currency is required.
+        </div> -->
+</div>

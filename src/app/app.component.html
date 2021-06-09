@@ -1,0 +1,29 @@
+<hello name="{{ name }}"></hello>
+<p>
+  Start editing to see some magic happen :)
+</p>
+
+<h2>Dynamic Controls</h2>
+
+<div *ngFor="let cd of configData">
+
+  <ng-container [ngSwitch]="cd.DataType">
+
+    <div *ngSwitchCase="configDataType.String" class="ctrl">
+      <app-textbox [additionalField]="cd"></app-textbox>
+    </div>
+
+    <div *ngSwitchCase="configDataType.Decimal" class="ctrl">
+      <app-textbox [additionalField]="cd"></app-textbox>
+    </div>
+
+    <div *ngSwitchCase="configDataType.Date" class="ctrl">
+      <app-date [additionalField]="cd"></app-date>
+    </div>
+
+    <div *ngSwitchCase="configDataType.StringLabel" class="ctrl">
+      <app-label [additionalField]="cd"></app-label>
+    </div>
+
+  </ng-container>
+</div>
